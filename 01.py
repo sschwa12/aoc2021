@@ -9,12 +9,9 @@ sample = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
 
 def find_depth_increases(depths: List[int]) -> int:
     cnt = 0
-    cur_depth = depths.pop(0)
-    while depths:
-        next_depth = depths.pop(0)
-        if next_depth > cur_depth:
+    for i, d in enumerate(depths):
+        if d > depths[i - 1]:
             cnt += 1
-        cur_depth = next_depth
     return cnt
 
 
