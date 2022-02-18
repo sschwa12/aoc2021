@@ -20,7 +20,7 @@ bingo_boards = list(chunks([[Num(value=int(n), marked=False) for n in b.split()]
 class Bingo:
     def __init__(self, nums: List[int], boards: List[List[List[Num]]]):
         self.nums = nums
-        self.boards = boards.copy()
+        self.boards = boards
 
     def mark(self, num: int, board: List[List[Num]]) -> None:
         for i in range(len(board)):
@@ -55,13 +55,13 @@ class Bingo:
 
 class BingoLastWinner(Bingo):
     def run(self):
-        winners = list()
+        winners = set()
         for num in nums:
             for i, board in enumerate(self.boards):
                 self.mark(num, board)
                 if self.is_winner(board):
                     if i not in winners:
-                        winners.append(i)
+                        winners.add(i)
                         if len(winners) == len(self.boards):
                             return self.calc_score(num, board)
 
