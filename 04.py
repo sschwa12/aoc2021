@@ -42,7 +42,6 @@ class Bingo:
         return False
 
     def calc_score(self, num: int, board: List[List[Num]]) -> int:
-        print([n.value for n in chain(*board) if not n.marked])
         return sum([n.value for n in chain(*board) if not n.marked]) * num
 
     def run(self):
